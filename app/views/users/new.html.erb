@@ -1,0 +1,17 @@
+<div class="bg-gray-600 rounded text-black text-md font-bold px-2 py-2 border my-4 mt-6">
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %>
+  <%= f.label :lastname %>
+  <%= f.text_field :lastname %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  <%= f.label :password %>
+  <%= f.number_field :password %>
+  <%= f.submit %>
+<% end %>
+
+</div>

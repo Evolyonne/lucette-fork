@@ -1,0 +1,152 @@
+$lucette-light-gray: #DCDCDC;
+$lucette-gray: #646464;
+$lucette-middle-gray: #424242;
+$lucette-dark-gray: #303030;
+$lucette-icone-gray: #e5e7eb;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $lucette-dark-gray;
+}
+
+
+h1 {
+  color: white;
+  font-family: Halant;
+  font-weight: 700;
+}
+
+h2 {
+  color: white;
+  font-family: Halant;
+  font-weight: 300;
+}
+
+h3 {
+  color: white;
+  font-size: 1.5em;
+}
+
+h4 {
+  color: white;
+  font-family: Halant;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px black;
+}
+
+h5 {
+  color: white;
+  font-family: Halant;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+h6 {
+  color: white;
+  font-family: Halant;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+hr {
+  height: 2px;
+  background-color: $lucette-icone-gray;
+  /*border: none;*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+nav {
+  background-color: $lucette-middle-gray;
+}
+
+footer {
+  background-color: $lucette-middle-gray;
+}
+
+#wrapper-day {
+  /*height: 500px;*/
+  width: 100vw;
+}
+
+#text-trip {
+  /*height: 500px;*/
+  font-size: 1.5rem;
+}
+
+/*.wrapper-activity {
+  height: 250px;
+  width: auto;
+}*/
+
+.wrapper-image {
+  width: auto;
+  height: 175px;
+  overflow: hidden;
+}
+
+.box-shadow {
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.rotate-card {
+  position: absolute;
+  top: 50;
+  left: 0;
+}
+
+.rotate-card-transform {
+  transform: rotate(8deg);
+  transform-origin: 20% 40%;
+}
+
+.shadow-custom {
+  text-shadow: 0 0 5px black;
+}
+
+.shadow-custom-card {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+  border-radius: 9px;
+}
+
+.shadow-custom-navbar {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.shadow-custom-footer {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.shadow-custom-arrow {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 1);
+}
+
+.footer-move-bot {
+  transition: all 1s ease-out;
+  transform: translate(0px,50px);
+}
+
+.bg-custom-title {
+  background-color: rgba(160, 160, 160, .5);
+}
+
+.swiper-container .custom-position-arrow {
+  position: fixed;
+  top: 50vh;
+}
+
+.swiper-container {
+  min-height: 100vh;
+}
+
+.button-tasks {
+  background-color: $lucette-dark-gray;
+}
+/* hover sur la div toute la hauteur du caroussel */

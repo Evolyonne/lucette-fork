@@ -1,0 +1,127 @@
+.burger { /* Contenu slide navbar */
+  -webkit-transition: left 0.5s ease;
+  -moz-transition: left 0.5s ease;
+  -ms-transition: left 0.5s ease;
+  -o-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+  background: #424242;
+  color: white;
+  cursor: pointer;
+  font-size: 2rem;
+  height: 100vh;
+  left: -30rem;
+  padding: 6rem 1rem 1rem 1rem;
+  position: fixed;
+  top: 0;
+  width: 20rem;
+  z-index: 8;
+}
+
+.burger.expanded {
+  left: 0;
+}
+
+.burger ul {
+  position: absolute;
+  width: 100%;
+ top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.burger-toggle {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  height: 1.2rem;
+  left: 1.2rem;
+  position: fixed;
+  top: 1.4rem;
+  width: 2.4rem;
+  z-index: 10;
+}
+
+.burger-toggle .burger-toggle-bar,  .burger-toggle .burger-toggle-bar::after,  .burger-toggle .burger-toggle-bar::before {
+  position: absolute;
+  /*top: 50%;*/
+/*  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;*/
+  /*background: white;*/
+  background-color: #e5e7eb; /* Color cross */
+  content: '';
+  height: 0.2rem;
+  width: 100%;
+
+  /*z-index: 10;*/
+}
+
+.burger-toggle .burger-toggle-bar { margin-top: 0; }
+
+.burger-toggle .burger-toggle-bar::after { margin-top: 0.8rem; }
+
+.burger-toggle .burger-toggle-bar::before { margin-top: -0.8rem; }
+
+.burger-toggle.expanded .burger-toggle-bar { background: transparent; }
+
+.burger-toggle.expanded .burger-toggle-bar::after, .burger-toggle.expanded .burger-toggle-bar::before {
+  /*background: white;*/
+  background-color: #e5e7eb; /* Color cross */
+  margin-top: 0;
+}
+
+.burger-toggle.expanded .burger-toggle-bar::after {
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.burger-toggle.expanded .burger-toggle-bar::before {
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+
+.wrapper-card-burger p {
+  font-family: Nunito;
+  font-size: 1rem;
+}
+
+nav ul:nth {
+  justify-content: space-between;
+}
+
+.padding-bell {
+  padding-left: 21rem;
+}
+
+.body-black-toggle {
+  background-color: rgba(0, 0, 0, .8);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.8;
+  z-index: 6;
+
+}
+
+.custom-text-button {
+  font-size: 3.75rem;
+  line-height: 1.75rem;
+}
+
+.text-burger-custom {
+  font-size: 1.5rem;
+}
+

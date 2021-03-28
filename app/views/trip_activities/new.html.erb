@@ -1,0 +1,56 @@
+<!-- START Tinder like -->
+<div class="wrapper-container-tinder h-96 overflow-hidden mx-auto pt-8" id="tinder-list">
+  <div class="wrapper-main">
+    <div class="font-bold text-md text-center text-white mb-1">
+      Activities near my trip
+    </div>
+    <div class="profiles">
+      <% @activities.each do |activity| %>
+        <div class="profile" data-activity-id="<%= activity.id %>">
+          <%= image_tag "#{activity.photo_title}.jpg", alt: "#{activity.name}", class: "profile-image rounded-xl" %>
+          <div class="profile-infos">
+            <div class="profile-name">
+              <%= activity.name %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- END Tinder like -->
+
+<div id="tinderForm" class="hidden absolute w-72 text-center left-11 border-2 rounded-xl">
+  <%= simple_form_for [@trip, @tripActivity], url: trip_trip_activities_path(@trip,@tripActivity) do |f| %>
+    <%= f.input :date,
+                item_wrapper_tag: 'div',
+                # item_wrapper_html: { class: "text-white" },
+                label: "When do you want to do this?",
+                # label_html: { class: 'text-white' },
+                required: true,
+                input_html: { value: @planned_at,
+                              class: "m-2 pl-4 pr-1 py-2 border-gray-300 focus:outline-none sm:text-sm rounded-md" },
+                              html5: true %>
+    <%= f.input :start_hour,
+                as: :select,
+                required: true,
+                label: "What time?",
+                collection: (6..20).map {|n| ["#{n}:00","#{n}:30"]}.flatten,
+                wrapper_html: { class: 'flex flex-col items-center justify-center mx-auto w-32' },
+                input_html: { type: :date,
+                              class: 'm-2 pl-4 pr-1 py-2 border-gray-300 focus:outline-none sm:text-sm rounded-md mx-auto' }%>
+
+    <%#= f.input :trip_id, as: :hidden, value: @current_trip%>
+    <%= f.input :activity_id, as: :hidden, value: nil %>
+    <%= f.submit value: "Add activity", class: "text-gray-200 text-md font-bold my-3 bg-transparent", data: { disable_with: false } %>
+  <% end %>
+</div>
+
+<div class="wrapper-container mt-4" id="map"
+  style="width: 100%; height: 210px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+

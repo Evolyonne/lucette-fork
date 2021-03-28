@@ -1,0 +1,106 @@
+<!-- FRONT - titres h enlevés pour remplacer par div (pb de taille - voir si pertinents les remettre) -->
+
+<!-- A CENTRER ? -->
+
+<div class="wrapper-header flex justify-center bg-custom-title text-gray-200 pt-2 pb-2 mb-1">
+  <div class="wrapper-title px-2 text-center">
+    <div class="px-2 text-4xl">
+      <h1>~ <%= @trip.name %> ~</h1>
+    </div>
+    <div class="text-md italic">
+      <%= @trip.begin_date.to_formatted_s(:long)  %> to <%= @trip.end_date.to_formatted_s(:long)  %>
+    </div>
+  </div>
+</div>
+
+<div id="wrapper-day" style="z-index: -5555;">
+  <div data-controller="carousel" class="swiper-container rounded-2xl"
+       data-carousel-options-value='{"initialSlide": <%= "#{@trip.index_for_today}" %>}' >
+    <div class="swiper-wrapper">
+      <!-- Should have n swiper-slide corresponding to the number of days of the trip -->
+      <% @trip.number_of_days.times do |index| %>
+        <div class="swiper-slide px-4">
+          <div class="container">
+            <div class="relative font-bold text-white mr-24 my-4 pl-2 text-2xl">
+              <%= "Day #{index + 1}" %>
+            </div>
+            <div class="text-white mr-24 my-4 pl-2 text-md -mt-3">
+              <%= "#{@trip.date_for_day(index).to_formatted_s(:long) }" %>
+            </div>
+            <div class="right-4 top-2 absolute text-gray-200 text-6xl">
+              <%= link_to "+", new_trip_trip_activity_path(@trip, planned_at: @trip.date_for_day(index)) %>
+            </div>
+          </div>
+
+          <div class="wrapper-booking mb-4">
+            <% @trip.day_bookings(index).each do |booking| %>
+              <%= link_to trip_booking_path(@trip.id, booking.id) do %>
+                <div class="flex p-2 border-2 text-white rounded-2xl mt-4 text-center justify-between align-middle">
+                  <div class="my-auto px-3">
+                    <% if booking.category == "Hotel" %>
+                      <i class="fas fa-building mr-4"></i>
+                    <% elsif booking.category == "Plane" %>
+                      <i class="fas fa-plane mr-4"></i>
+                    <% else %>
+                      <i class="fas fa-ship mr-4"></i>
+                    <% end %> <!-- Icone Transport -->
+                  </div>
+                  <div class="text-center mx-auto pr-4">
+                    <%= "#{booking.name}" %></br>
+                    <div class="text-sm"> <%= "#{booking.address}" %> </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          </br>
+          <% @trip.day_activities(@trip.date_for_day(index)).each do |trip_activity| %>
+            <% activity = trip_activity.activity %>
+            <%= link_to trip_activity_path(@trip, activity.id) do %>
+
+              <div class="wrapper-image relative justify-between rounded-2xl mb-6 shadow-custom-card">
+                <% if activity.photo_title.present? %>
+                  <%= image_tag "#{activity.photo_title}.jpg", alt: "#{activity.name}", class: "static" %>
+                <% end %>
+
+                  <div class="border-2 border-white w-24 h-14 absolute top-0 right-0 -m-3 -mr-3 rounded-bl-xl bg-white bg-opacity-40">
+                  </div>
+                  <div class="border-2 border-white w-32 h-12 absolute bottom-0 -m-1 rounded-tr-2xl">
+                  </div>
+                <div class="box-content container absolute top-2 flex justify-between"> <!-- --------- Name + Hour --------- -->
+                  <div class="leading-8 w-60 pl-3 text-lg text-white font-bold">
+                    <%= activity.name %>
+                  </div>
+
+                  <div class="leading-8 text-lg text-white pr-3">
+                    <div class="text-white font-bold text-xl">
+                      <%= show_start_hour(trip_activity.start_hour) %>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="flex absolute bottom-3 left-3 text-white shadow-custom"> <!-- ---------- Stars ----------- -->
+                  <% activity.valid_rating.times do %> <!-- As many filled stars (up to five) as activity rating -->
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - activity.valid_rating).times do %> <!-- As many empty stars as five - activity rating -->
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+
+              </div>
+
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="h-5">
+    <div class="swiper-button-next custom-position-arrow"></div>
+    <div class="swiper-button-prev custom-position-arrow"></div>
+    </div>
+  </div>
+</div>
+
+
